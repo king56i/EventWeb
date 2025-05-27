@@ -1,0 +1,20 @@
+.borderInner {
+    position: relative;
+}
+
+.borderInner * {
+    position: relative;
+    z-index: 1;
+}
+
+.borderInner::before {
+    position: absolute;
+    content: "";
+    top: 10px;
+    right: 10px;
+    bottom: 10px;
+    left: 10px;
+    background: none;
+    border: 1px solid var(--light);
+    z-index: 0;
+}
