@@ -1,17 +1,17 @@
 import { Link } from "react-router-dom";
-
+import styles from "@scss/user/components/Footer/Footer.module.scss"
 export default function Footer(){
     return (
         <>
-        <div className="container-fluid bg-img text-secondary" style={{marginTop: '90px'}}>
+        <div className={`container-fluid ${styles.bgImg} text-secondary`} style={{marginTop: '90px'}}>
             <div className="container">
                 <div className="row gx-5">
                     <div className="col-lg-4 col-md-6 mb-lg-n5">
                         <div className="d-flex flex-column align-items-center justify-content-center text-center h-100 bg-primary border-inner p-4">
                             <a href="index.html" className="navbar-brand">
-                                <h1 className="m-0 text-uppercase text-white"><i className="fa fa-birthday-cake fs-1 text-dark me-3"></i>CakeZone</h1>
+                                <h1 className="m-0 text-uppercase text-white"><i className="fa fa-birthday-cake fs-1 text-dark me-3"></i>KingEvents</h1>
                             </a>
-                            <p className="mt-3">Lorem diam sit erat dolor elitr et, diam lorem justo labore amet clita labore stet eos magna sit. Elitr dolor eirmod duo tempor lorem, elitr clita ipsum sea. Nonumy rebum et takimata ea takimata amet gubergren, erat rebum magna lorem stet eos. Diam amet et kasd eos duo dolore no.</p>
+                            <p className="mt-3">Dịch vụ tổ chức sự kiện chuyên nghiệp toàn quốc: hội nghị, hội thảo, khai trương, ra mắt sản phẩm, team building, gala dinner... Đồng hành cùng doanh nghiệp nâng tầm thương hiệu và lan tỏa giá tr</p>
                         </div>
                     </div>
                     <div className="col-lg-8 col-md-6">
@@ -39,6 +39,7 @@ export default function Footer(){
                                 <h4 className="text-primary text-uppercase mb-4">Quick Links</h4>
                                 <div className="d-flex flex-column justify-content-start">
                                     <Link to="/" className="text-secondary mb-2" ><i className="bi bi-arrow-right text-primary me-2"></i>Trang Chủ</Link>
+                                    <Link to="/about" className="text-secondary mb-2" ><i className="bi bi-arrow-right text-primary me-2"></i>Về Chúng Tôi</Link>
                                     <Link to="/events" className="text-secondary mb-2" ><i className="bi bi-arrow-right text-primary me-2"></i>Sự Kiện</Link>
                                     <Link to="/payment" className="text-secondary mb-2" ><i className="bi bi-arrow-right text-primary me-2"></i>Thanh Toán</Link>
                                     <Link to="/contact" className="text-secondary" ><i className="bi bi-arrow-right text-primary me-2"></i>Liên Hệ</Link>
@@ -46,7 +47,7 @@ export default function Footer(){
                             </div>
                             <div className="col-lg-4 col-md-12 pt-0 pt-lg-5 mb-5">
                                 <h4 className="text-primary text-uppercase mb-4">Newsletter</h4>
-                                <p>Amet justo diam dolor rebum lorem sit stet sea justo kasd</p>
+                                <p>Nhận thông tin sự kiện mới nhất, xu hướng tổ chức chuyên nghiệp và ưu đãi độc quyền từ KingEvents – nền tảng tổ chức sự kiện hàng đầu toàn quốc.</p>
                                 <form action="">
                                     <div className="input-group">
                                         <input type="text" className="form-control border-white p-3" placeholder="Your Email"/>
@@ -61,7 +62,7 @@ export default function Footer(){
         </div>
         <div className="container-fluid text-secondary py-4" style={{background: '#111111'}}>
             <div className="container text-center">
-                <p className="mb-0">&copy; <a className="text-white border-bottom" href="#">King</a>. All Rights Reserved. </p>
+                <p className="mb-0">&copy; <a className="text-white border-bottom" href="#">KingEvents</a>. All Rights Reserved. </p>
             </div>
         </div>
         </>

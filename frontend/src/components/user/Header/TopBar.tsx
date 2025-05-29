@@ -15,7 +15,7 @@ export default function TopBar(){
                 <div className={`${styles.borderInner} col-lg-4 text-center bg-primary py-3`}>
                     <div className="d-inline-flex align-items-center justify-content-center">
                         <a href="index.html" className="navbar-brand">
-                            <h1 className="m-0 text-uppercase text-white"><i className="fa fa-birthday-cake fs-1 text-dark me-3"></i>KING</h1>
+                            <h1 className="m-0 text-uppercase text-white"><i className="fa fa-birthday-cake fs-1 text-dark me-3"></i>KINGEVENTS</h1>
                         </a>
                     </div>
                 </div>

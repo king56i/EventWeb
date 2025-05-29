@@ -6,12 +6,14 @@ import Events from "./pages/user/Events"
 import ThanhToan from "./pages/user/ThanhToan"
 import Contact from "./pages/user/Contact"
 import UserTemplate from "./template/userTemplate"
+import About from "./pages/user/About"
 function App() {
   return (
     <Router>
       <Routes>
         <Route element={<UserTemplate/>}>
           <Route path="/" element={<TrangChu/>}/>
+          <Route path="/about" element={<About/>}/>
           <Route path="/events" element={<Events/>}/>
           <Route path="/payment" element={<ThanhToan/>}/>
           <Route path="/contact" element={<Contact/>}/>

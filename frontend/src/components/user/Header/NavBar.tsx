@@ -12,6 +12,7 @@ export default function NavBar(){
             <div className="collapse navbar-collapse" id="navbarCollapse">
                 <div className="navbar-nav ms-auto mx-lg-auto py-0">
                     <Link to="/"  className="nav-item nav-link active">Trang Chủ</Link>
+                    <Link to="/about" className="nav-item nav-link">Về Chúng Tôi</Link>
                     <Link to="/events" className="nav-item nav-link">Sự Kiện</Link>
                     <Link to="/payment" className="nav-item nav-link">Thanh Toán</Link>
                     <div className="nav-item dropdown">
