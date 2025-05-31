@@ -8,7 +8,7 @@ import Contact from "./pages/user/Contact"
 import UserTemplate from "./template/userTemplate"
 import About from "./pages/user/About"
 import AdminTemplate from "./template/adminTemplate"
-import EventsQly from "./pages/admin/events/events"
+import EventsMN from "./pages/admin/events/events"
 function App() {
   return (
     <Router>
@@ -21,7 +21,7 @@ function App() {
           <Route path="/contact" element={<Contact/>}/>
         </Route>
         <Route path="/admin" element={<AdminTemplate/>}>
-          <Route path="events" element={<EventsQly/>}/>
+          <Route path="events" element={<EventsMN/>}/>
         </Route>
       </Routes>
     </Router>

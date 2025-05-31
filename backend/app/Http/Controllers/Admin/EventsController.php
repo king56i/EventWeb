@@ -10,6 +10,7 @@ class EventsController extends Controller
 {
     //
     public function index(){
-            return EventsResource::collection(Events::all());
+            $events = Events::with(['organizer'])->get();
+            return EventsResource::collection($events);
     }
 }

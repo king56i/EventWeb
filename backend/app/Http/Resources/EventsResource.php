@@ -15,7 +15,7 @@ class EventsResource extends JsonResource
             'start_date'  => $this->start_date,
             'end_date'    => $this->end_date,
             'location'    => $this->location,
-            'organizers_id' => $this->organizers_id,
+            'organizer' => new OrganizersResource($this->whenLoaded('organizer')),
             'status'      => $this->status,
             'created_at'  => $this->created_at,
             'updated_at'  => $this->updated_at,

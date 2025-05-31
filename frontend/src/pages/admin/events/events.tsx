@@ -1,6 +1,7 @@
-import EventsList from "@components/admin/events/EventsList"
-export default function EventsQly(){
+import { EventTable } from "@components/admin/events/EventTable";
+
+export default function EventsMN(){
     return <div>
-        <EventsList/>
+        <EventTable/>
     </div>
 }

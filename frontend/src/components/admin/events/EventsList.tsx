@@ -8,7 +8,7 @@ type Event = {
     start_date: string;
     end_date: string;
     location: string;
-    organizers_id: number;
+    organizer: {id:number,name:string,description:string,contact_info:string};
     status: "draft" | "published" | "cancelled";
     created_at: string;
     updated_at: string;
@@ -25,11 +25,10 @@ export default function EventsList(){
             }
         }
         fetchEvents();
-    },[])
-    return <>
-        <ul>
-            {events.map(event=> <EventsItem key={event.id} event={event} />)}
-
-        </ul>
+    },[events])
+    return (
+    <>
+        {events.map(event=> <EventsItem key={event.id} event={event} />)}
     </>
+    )
 }

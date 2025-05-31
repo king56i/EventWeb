@@ -10,6 +10,3 @@ Route::group(['prefix'=>"admin"],function(){
     Route::resource("events",EventsController::class);
 
 });
-Route::get('/test-api', function () {
-    return response()->json(['status' => 'working']);
-});
