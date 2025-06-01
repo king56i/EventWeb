@@ -1,5 +1,4 @@
 import { BrowserRouter as Router,Routes,Route } from "react-router-dom"
-import "@lib/owlcarousel/assets/owl.carousel.min.css"
 import "@css/bootstrap.min.css"
 import TrangChu from "./pages/user/TrangChu"
 import Events from "./pages/user/Events"
