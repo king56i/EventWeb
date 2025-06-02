@@ -36,4 +36,8 @@ class EventsController extends Controller
     public function destroy(Events $event){
         $event->delete();
     }
+    public function trashcan(){
+        $events = Events::with(['organizer'])->onlyTrashed()->get();
+        return EventsResource::collection($events);
+    }
 }

@@ -12,6 +12,9 @@ Route::group(['prefix'=>"admin"],function(){
     // organizers
     Route::resource("organizers",OrganizersController::class);
     // events
-    Route::resource("events",EventsController::class);
+    Route::resource("events",EventsController::class)->except('show');
+    Route::prefix('events')->group(function(){
+        Route::get('trashcan',[EventsController::class,'trashcan']);
+    });
 
 });

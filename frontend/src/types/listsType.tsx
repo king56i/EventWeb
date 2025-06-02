@@ -18,4 +18,8 @@ type OrganizerType = {
     created_at: string;
     updated_at: string;
 }
-export type {OrganizerType,EventType}
+type HeaderType = {
+    id:number,
+    title:string
+}
+export type {OrganizerType,EventType,HeaderType}

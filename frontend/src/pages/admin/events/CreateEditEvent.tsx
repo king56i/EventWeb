@@ -4,7 +4,7 @@ export default function CreateEditEvent(){
 return(
     <>
         Thêm Event
-        <EventForm item={null}/>
+        <EventForm/>
     </>
 )
 }

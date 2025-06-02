@@ -23,9 +23,13 @@
     width: 100%;
     border-collapse: collapse;
     margin-top: 10px;
+    position: absolute; /* Giữ thead cố định */
+    top: 70px; /* Cố định ở đỉnh container */
+    background: var(--white); /* Đảm bảo nền không bị trong suốt */
+    z-index: 1; /* Đảm bảo thead nằm trên các hàng khác */
+    font-weight: 600;
 }
-
-.table thead td {
+.table thead th {
     font-weight: 600;
 }
 
@@ -44,8 +48,6 @@
 }
 
 .btn-link {
-
-
     background: var(--white);
     color: var(--blue);
     border: 1px solid var(--blue);

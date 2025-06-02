@@ -10,6 +10,7 @@ import AdminTemplate from "./template/adminTemplate"
 import EventsMN from "./pages/admin/events/events"
 import OrganizersMN from "./pages/admin/organizers/organizers"
 import CreateEditEvent from "./pages/admin/events/CreateEditEvent"
+import TrashCan from "./pages/admin/events/TrashCan"
 function App() {
   return (
     <Router>
@@ -24,6 +25,7 @@ function App() {
         <Route path="/admin" element={<AdminTemplate/>}>
           <Route path="events">
             <Route path="add" element={<CreateEditEvent/>}/>
+            <Route path="trashcan" element={<TrashCan/>}/>
             <Route path=":id?" element={<CreateEditEvent/>}/>
             <Route index element={<EventsMN/>}/>
           </Route>

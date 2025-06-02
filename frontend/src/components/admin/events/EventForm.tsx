@@ -4,7 +4,7 @@ import { useForm } from "react-hook-form";
 import type { EventInputs } from "@src/types/formsType";
 import type { EventType, OrganizerType } from "@src/types/listsType";
 import { useNavigate, useParams } from "react-router-dom";
-export default function EventForm({item}:{item:string|null}){
+export default function EventForm(){
     const { register, handleSubmit, formState: { errors },reset } = useForm<EventInputs>();
     const [organizers, setOrganizers] = useState<OrganizerType[]>([]);
     const [event,setEvent] = useState<EventType|null>(null);
@@ -18,6 +18,7 @@ export default function EventForm({item}:{item:string|null}){
                         `http://localhost:8000/api/admin/events/${id}/edit/`
                     );
                     setEvent(resEve.data.data);
+                    
                 } catch (error){
                     console.error("Lỗi khi gọi API:", error);
                 }

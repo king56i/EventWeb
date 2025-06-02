@@ -1,4 +1,4 @@
-/**======================================================================
+/* *======================================================================
 =========================================================================
 Template Name: Able pro Bootstrap Admin Template
 Author: Phoenixcoded
@@ -1811,9 +1811,10 @@ pre code {
 }
 
 .table {
-    width: 100%;
+    max-width: 100% !important;
     margin-bottom: 1rem;
     color: #373a3c;
+    height: 100%;
 }
 
 .table th,
