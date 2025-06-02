@@ -1,18 +1,17 @@
-import { Table } from "@components/admin/events/Table";
+import { Table } from "@components/admin/organizers/Table";
 import "@css/admin/template/index/index.css"
-import { Link } from "react-router-dom";
-export default function EventsMN(){
+export default function OrganizersMN(){
     return <>
     <div className="page-header">
         <div className="page-block">
             <div className="row align-items-center">
                 <div className="col-md-12">
                     <div className="page-header-title">
-                        <h5 className="m-b-10">Events</h5>
+                        <h5 className="m-b-10">Organizers</h5>
                     </div>
                     <ul className="breadcrumb">
                         <li className="breadcrumb-item"><a ><i className="feather icon-home"></i></a></li>
-                        <li className="breadcrumb-item"><a >Events</a></li>
+                        <li className="breadcrumb-item"><a >Organizers</a></li>
                     </ul>
                 </div>
             </div>
@@ -20,8 +19,8 @@ export default function EventsMN(){
     </div>
     <div className="tableContainer">
         <div className="cardHeader">
-            <h2>Events</h2>
-            <Link to="/admin/events/add" className="btn-add">Thêm Sự Kiện</Link>
+            <h2>Organizers</h2>
+            <a href="" className="btn-add">Thêm organizer</a>
             <button style={{opacity:0.5}} className="btn" id="soft-delete">
                 <svg viewBox="0 0 15 17.5" height="17.5" width="15" xmlns="http://www.w3.org/2000/svg" className="icon">
                     <path transform="translate(-2.5 -1.25)"

@@ -1,4 +1,4 @@
-export type EventType = {
+type EventType = {
     id: number;
     title: string;
     description: string;
@@ -18,7 +18,4 @@ type OrganizerType = {
     created_at: string;
     updated_at: string;
 }
-export type PageData = {
-    events:EventType[],
-    // organizers:OrganizerType[],
-}
+export type {OrganizerType,EventType}

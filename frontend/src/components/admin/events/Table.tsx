@@ -1,4 +1,4 @@
-import List from "./List";
+import EventsList from "./EventsList";
 export function Table(){
     return <>
     
@@ -12,10 +12,11 @@ export function Table(){
                     <th>Địa Điểm</th>
                     <th>Đơn Vị Tổ Chức</th>
                     <th>Trạng Thái</th>
+                    <th colSpan={2}>Action</th>
                 </tr>
             </thead>
             <tbody>
-                <List/>
+                <EventsList/>
             </tbody>
         </table>
     </>

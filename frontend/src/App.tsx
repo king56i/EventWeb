@@ -8,6 +8,8 @@ import UserTemplate from "./template/userTemplate"
 import About from "./pages/user/About"
 import AdminTemplate from "./template/adminTemplate"
 import EventsMN from "./pages/admin/events/events"
+import OrganizersMN from "./pages/admin/organizers/organizers"
+import CreateEditEvent from "./pages/admin/events/CreateEditEvent"
 function App() {
   return (
     <Router>
@@ -20,7 +22,12 @@ function App() {
           <Route path="/contact" element={<Contact/>}/>
         </Route>
         <Route path="/admin" element={<AdminTemplate/>}>
-          <Route path="events" element={<EventsMN/>}/>
+          <Route path="events">
+            <Route path="add" element={<CreateEditEvent/>}/>
+            <Route path=":id?" element={<CreateEditEvent/>}/>
+            <Route index element={<EventsMN/>}/>
+          </Route>
+          <Route path="organizers" element={<OrganizersMN/>}/>
         </Route>
       </Routes>
     </Router>

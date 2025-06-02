@@ -1,8 +1,6 @@
-import { pageContext } from "@src/context/pageContext"
-import { useContext } from "react"
+import { Link } from "react-router-dom";
 
 export default function NavBarADM ({NavBar}:{NavBar:boolean}){
-    const { setPage } = useContext(pageContext);
     return (<>
         <nav className={!NavBar ? "pcoded-navbar":`pcoded-navbar navbar-collapsed`}>
             <div className="navbar-wrapper  ">
@@ -12,14 +10,14 @@ export default function NavBarADM ({NavBar}:{NavBar:boolean}){
                         <li className="nav-item pcoded-menu-caption">
                             <label>Events</label>
                         </li>
-                        <li onClick={()=> setPage("events")}  className="nav-item">
-                            <span className="pcoded-micon"><i className="feather icon-align-justify"></i></span><span className="pcoded-mtext">Danh sách sự kiện</span>
+                        <li  className="nav-item">
+                            <Link className="nav-link" to="/admin/events"><span className="pcoded-micon"><i className="feather icon-align-justify"></i></span><span className="pcoded-mtext">Danh sách sự kiện</span></Link>
                         </li>
                         <li className="nav-item pcoded-menu-caption">
                             <label>Organizers</label>
                         </li>
-                        <li onClick={()=> setPage("organizers")} className="nav-item">
-                            <a href="" className="nav-link "><span className="pcoded-micon"><i className="feather icon-align-justify"></i></span><span className="pcoded-mtext">Danh Sách Organizers</span></a>
+                        <li className="nav-item">
+                            <Link to="/admin/organizers" className="nav-link "><span className="pcoded-micon"><i className="feather icon-align-justify"></i></span><span className="pcoded-mtext">Danh Sách Organizers</span></Link>
                         </li>
                         <li className="nav-item pcoded-hasmenu">
                             <a href="#!" className="nav-link "><span className="pcoded-micon"><i className="feather icon-box"></i></span><span className="pcoded-mtext">Action</span></a>
@@ -31,7 +29,7 @@ export default function NavBarADM ({NavBar}:{NavBar:boolean}){
                         <li className="nav-item pcoded-menu-caption">
                             <label>Notifications</label>
                         </li>
-                        <li onClick={()=> setPage("notifications")} className="nav-item">
+                        <li className="nav-item">
                             <a href="" className="nav-link "><span className="pcoded-micon"><i className="feather icon-align-justify"></i></span><span className="pcoded-mtext">Danh Sách Người Dùng</span></a>
                         </li>
                         <li className="nav-item pcoded-hasmenu">
