@@ -60,6 +60,7 @@ class EventsController extends Controller
         $events = $request->events;
         Events::whereIn('id',$events)->delete();
         return response()->json(['success'=>true,'message'=>'Xóa những sự kiện đã chọn thành công']);
+
     }
 
 }
