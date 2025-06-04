@@ -4,36 +4,33 @@ import { useForm } from "react-hook-form";
 import type { EventInputs } from "@src/types/formsType";
 import type { EventType, OrganizerType } from "@src/types/listsType";
 import { useNavigate, useParams } from "react-router-dom";
+import Swal from "sweetalert2";
+import EventServices from "@src/services/api-events";
+import OrganizerServices from "@src/services/api-organizers";
 export default function EventForm(){
     const { register, handleSubmit, formState: { errors },reset } = useForm<EventInputs>();
     const [organizers, setOrganizers] = useState<OrganizerType[]>([]);
     const [event,setEvent] = useState<EventType|null>(null);
     const {id} = useParams();
     const navigate = useNavigate();
-    if (id && id.trim() !== ""){
-        useEffect(()=>{
-            const fetchEvent = async()=>{
-                try{
-                    const resEve = await axios.get(
-                        `http://localhost:8000/api/admin/events/${id}/edit/`
-                    );
-                    setEvent(resEve.data.data);
-                    
-                } catch (error){
-                    console.error("Lỗi khi gọi API:", error);
-                }
-            }
-            fetchEvent();
-        },[id])
-    }
+    useEffect(() => {
+        if (id?.trim()) {
+            axios.get(`http://localhost:8000/api/admin/events/${id}/edit/`)
+            .then(res => setEvent(res.data.data))
+            .catch(err => console.error("Lỗi khi gọi API:", err));
+        }
+    }, [id]);
     const onSubmit = async(data:EventInputs)=> {
         try {
-            if (id) {
-                const res = await axios.put(`http://localhost:8000/api/admin/events/${id}`, data);
-                console.log("Cập nhật thành công:");
-            } else {
-                const res = await axios.post(`http://localhost:8000/api/admin/events`, data);
-                console.log("Tạo mới thành công:");
+            const  res = id ? await EventServices.updateEvent({id:parseInt(id),data}): await EventServices.addEvent(data);
+            if (res?.data.success) {
+                Swal.fire({
+                    title: 'Success!',
+                    text: `${res.data.message}`,
+                    icon: 'success',
+                    confirmButtonColor: '#3085d6',
+                    confirmButtonText: 'OK'
+                });
             }
             navigate('/admin/events');
         } catch (error) {
@@ -47,17 +44,16 @@ export default function EventForm(){
         }
     }, [event, reset]);
     useEffect(()=>{
-
         const fetchOrganizers = async ()=>{
             try {
-                const resOrga = await axios.get(`http://localhost:8000/api/admin/events/create`);
-                setOrganizers(resOrga.data.data);
+                const resOrga = await OrganizerServices.getOrganizers();
+                setOrganizers(resOrga?.data.data);
             } catch (error) {
                 console.error("Lỗi khi gọi API:", error);
             }
         }
         fetchOrganizers();
-    },[])
+    },[event])
     return (
         <form onSubmit={handleSubmit(onSubmit)}>
             <input type="text" {...register("title",{required:true})} />

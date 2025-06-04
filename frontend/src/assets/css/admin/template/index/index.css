@@ -1,11 +1,12 @@
 .tableContainer {
     position: relative;
     display: grid;
-    min-height: 500px;
+    min-height: 700px;
     background: var(--white);
-    padding: 20px;
+    padding: 20px 40px;
     box-shadow: 0 7px 25px rgba(0, 0, 0, 0.08);
     border-radius: 20px;
+    overflow-y:scroll ;
 }
 
 .cardHeader {
@@ -20,17 +21,17 @@
 }
 
 .table {
-    width: 100%;
     border-collapse: collapse;
     margin-top: 10px;
-    position: absolute; /* Giữ thead cố định */
-    top: 70px; /* Cố định ở đỉnh container */
+    position: absolute;
+    top: 70px; 
     background: var(--white); /* Đảm bảo nền không bị trong suốt */
     z-index: 1; /* Đảm bảo thead nằm trên các hàng khác */
-    font-weight: 600;
+    table-layout: fixed;
 }
 .table thead th {
     font-weight: 600;
+    max-width: 500px;
 }
 
 .tableContainer table tr {
@@ -45,6 +46,7 @@
 
 .tableContainer table tr td {
     padding: 10px;
+    max-width: 500px;
 }
 
 .btn-link {

@@ -3,7 +3,7 @@ import { Link } from "react-router-dom";
 export default function NavBarADM ({NavBar}:{NavBar:boolean}){
     return (<>
         <nav className={!NavBar ? "pcoded-navbar":`pcoded-navbar navbar-collapsed`}>
-            <div className="navbar-wrapper  ">
+            <div className="navbar-wrapper" style={{height:"100vh"}}>
                 <div className="navbar-content scroll-div " >
                     
                     <ul className="nav pcoded-inner-navbar ">
@@ -37,66 +37,6 @@ export default function NavBarADM ({NavBar}:{NavBar:boolean}){
                             <ul className="pcoded-submenu">
                                 <li><a href="">Thêm</a></li>
                             </ul>
-                        </li>
-                        <li className="nav-item pcoded-menu-caption">
-                            <label>Roles</label>
-                        </li>
-                        <li className="nav-item">
-                            <a href="" className="nav-link "><span className="pcoded-micon"><i className="feather icon-align-justify"></i></span><span className="pcoded-mtext">Danh Sách Vai Trò</span></a>
-                        </li>
-                        <li className="nav-item pcoded-hasmenu">
-                            <a href="#!" className="nav-link "><span className="pcoded-micon"><i className="feather icon-box"></i></span><span className="pcoded-mtext">Action</span></a>
-                            <ul className="pcoded-submenu">
-                                <li><a href="">Thêm</a></li>
-                            </ul>
-                        </li>
-                        <li className="nav-item pcoded-menu-caption">
-                            <label>Permissions</label>
-                        </li>
-                        <li className="nav-item">
-                            <a href="" className="nav-link "><span className="pcoded-micon"><i className="feather icon-align-justify"></i></span><span className="pcoded-mtext">Danh Sách Quyền Lợi</span></a>
-                        </li>
-                        <li className="nav-item pcoded-hasmenu">
-                            <a href="#!" className="nav-link "><span className="pcoded-micon"><i className="feather icon-box"></i></span><span className="pcoded-mtext">Action</span></a>
-                            <ul className="pcoded-submenu">
-                                <li><a href="">Thêm</a></li>
-                            </ul>
-                        </li>
-                        <li className="nav-item pcoded-menu-caption">
-                            <label>Notifications</label>
-                        </li>
-                        <li className="nav-item">
-                            <a href="" className="nav-link "><span className="pcoded-micon"><i className="feather icon-align-justify"></i></span><span className="pcoded-mtext">Danh Sách Thông Báo</span></a>
-                        </li>
-                        <li className="nav-item pcoded-hasmenu">
-                            <a href="#!" className="nav-link "><span className="pcoded-micon"><i className="feather icon-box"></i></span><span className="pcoded-mtext">Action</span></a>
-                            <ul className="pcoded-submenu">
-                                <li><a href="">Thùng rác</a></li>
-                            </ul>
-                        </li>
-                        <li className="nav-item pcoded-menu-caption">
-                            <label>Subscriptions Plans</label>
-                        </li>
-                        <li className="nav-item">
-                            <a href="" className="nav-link "><span className="pcoded-micon"><i className="feather icon-align-justify"></i></span><span className="pcoded-mtext">Danh Sách Gói</span></a>
-                        </li>
-                        <li className="nav-item pcoded-hasmenu">
-                            <a href="#!" className="nav-link "><span className="pcoded-micon"><i className="feather icon-box"></i></span><span className="pcoded-mtext">Action</span></a>
-                            <ul className="pcoded-submenu">
-                                <li><a href="">Thêm</a></li>
-                            </ul>
-                        </li>
-                        <li className="nav-item pcoded-menu-caption">
-                            <label>Subscriptions</label>
-                        </li>
-                        <li className="nav-item">
-                            <a href="" className="nav-link "><span className="pcoded-micon"><i className="feather icon-align-justify"></i></span><span className="pcoded-mtext">Danh Sách Đăng Ký</span></a>
-                        </li>
-                        <li className="nav-item pcoded-menu-caption">
-                            <label>Comments</label>
-                        </li>
-                        <li className="nav-item">
-                            <a href="" className="nav-link "><span className="pcoded-micon"><i className="feather icon-align-justify"></i></span><span className="pcoded-mtext">Danh Sách Bình Luận</span></a>
                         </li>
                     </ul>
                 </div>
