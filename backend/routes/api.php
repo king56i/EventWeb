@@ -14,10 +14,13 @@ Route::group(['prefix'=>"admin"],function(){
     // events
     Route::resource("events",EventsController::class)->except('show');
     Route::prefix('events')->group(function(){
-        Route::delete('/delete-events',[EventsController::class,'deleteEvents']);
         Route::get('trashcan',[EventsController::class,'trashcan']);
         Route::post('/trashcan/{id}',[EventsController::class,'restore']);
         Route::delete('/trashcan/{id}',[EventsController::class,'forceDelete']);
+        Route::post('/delete-events',[EventsController::class,'deleteEvents']);
+        Route::post('/delete-forever-events',[EventsController::class,'deleteForeverEvents']);
+        Route::post('/restore-events',[EventsController::class,'restoreEvents']);
+
     });
 
 });

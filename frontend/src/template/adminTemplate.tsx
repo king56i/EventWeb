@@ -5,6 +5,7 @@ import HeaderADM from "@components/admin/Header/HeaderADM";
 import NavBarADM from "@components/admin/Header/NavBarADM";
 import { Outlet } from "react-router-dom";
 import { useEffect, useState } from "react";
+import { ManageProvider } from "@src/context/ManageContext";
 export default function AdminTemplate(){
     const [loading, setLoading] = useState(true);
     const [NavBar,setNavBar] = useState(false);
@@ -26,7 +27,9 @@ export default function AdminTemplate(){
     <main>
         <div className="pcoded-main-container">
             <div className="pcoded-content">
-                <Outlet/>
+                <ManageProvider>
+                    <Outlet/>
+                </ManageProvider>
             </div>
         </div>
     </main>

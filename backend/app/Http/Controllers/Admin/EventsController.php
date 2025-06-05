@@ -60,7 +60,16 @@ class EventsController extends Controller
         $events = $request->events;
         Events::whereIn('id',$events)->delete();
         return response()->json(['success'=>true,'message'=>'Xóa những sự kiện đã chọn thành công']);
-
+    }
+    public function deleteForeverEvents(Request $request){
+        $events = $request->events;
+        Events::whereIn('id',$events)->forceDelete();
+        return response()->json(['success'=>true,'message'=>'Xóa vv những sự kiện đã chọn thành công']);
+    }
+    public function restoreEvents(Request $request){
+        $events = $request->events;
+        Events::whereIn('id',$events)->restore();
+        return response()->json(['success'=>true,'message'=>'Phục hồi những sự kiện đã chọn thành công']);
     }
 
 }

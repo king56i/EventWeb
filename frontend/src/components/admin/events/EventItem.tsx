@@ -1,17 +1,37 @@
-import { useEventMode } from "@src/context/EventModeContext";
+import { ManageContext } from "@src/context/ManageContext";
+import { useEventMode } from "@src/context/event/EventModeContext";
 import EventServices from "@src/services/api-events";
 import type { EventType } from "@src/types/listsType";
 import truncateText from "@src/utils/truncateText";
+import { useContext } from "react";
 import { Link } from "react-router-dom";
 type EventItemProps = {
     item:EventType,
-    onSuccess:any,
-    dispatch:any,
-    checkBoxes:number[]
+    events:EventType[],
+    setEvent:any
 };
-
-export default function EventItem({item,onSuccess,dispatch,checkBoxes}:EventItemProps){
+export default function EventItem({item,events,setEvent}:EventItemProps){
     const mode = useEventMode();
+    async function handleClick(action:string){
+        let res;
+        switch(action){
+            case "xoaMem":
+                res= await EventServices.deleteEvent(item.id);
+                break;
+            case "phucHoi":
+                res = await EventServices.restoreEvent(item.id);
+                break;
+            case "xoaVV":
+                res = await EventServices.forceDelete(item.id);
+                break;
+
+        }
+        if(res?.data?.success){
+            handleSuccess(item.id,res,events,setEvent)
+            dispatch({ type: "removeAll" });
+        }
+    }
+    const {checkBoxes,dispatch,handleSuccess} = useContext(ManageContext);
     return <tr>
         <td>
             <label className="container">
@@ -29,13 +49,13 @@ export default function EventItem({item,onSuccess,dispatch,checkBoxes}:EventItem
         {mode=="active" ? <td>
             <div style={{display:"flex",justifyContent:"space-evenly"}} >
                 <Link to={`/admin/events/${item.id}`} className="btn-edit">Sửa</Link>
-                <button onClick={async ()=>onSuccess(item.id,await EventServices.deleteEvent(item.id))} className="btn-delete">Xóa</button>
+                <button onClick={()=>handleClick('xoaMem')} className="btn-delete">Xóa</button>
             </div>
         </td>
         :<td colSpan={2}>
             <div style={{display:"flex",justifyContent:"space-evenly"}} >
-                <button onClick={async ()=>onSuccess(item.id,await EventServices.restoreEvent(item.id))} className="btn-edit">Phục Hồi</button>
-                <button onClick={async ()=>onSuccess(item.id,await EventServices.forceDelete(item.id))} className="btn-delete">Xóa Vĩnh Viễn</button>
+                <button onClick={()=>handleClick('phucHoi')} style={{backgroundColor:"#2ecc71"}} className="btn-edit">Phục Hồi</button>
+                <button onClick={()=>handleClick('xoaVV')} className="btn-delete">Xóa Vĩnh Viễn</button>
             </div>
         </td>
         }

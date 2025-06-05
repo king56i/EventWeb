@@ -30,9 +30,9 @@ const EventServices = {
         const result = await Swal.fire({
             title: 'Are you sure?',
             text: 'Bạn có muốn phục hồi sự kiện này không ?',
-            icon: 'info',
+            icon: 'question',
             showCancelButton: true,
-            confirmButtonColor: '#3085d6',
+            confirmButtonColor: '#2ecc71',
             cancelButtonColor: '#d33',
             confirmButtonText: 'Phục hồi!',
             cancelButtonText: 'Hủy',
@@ -90,13 +90,54 @@ const EventServices = {
         })
         if (result.isConfirmed) {
             try{
-                return await apiDelete({url:`http://localhost:8000/api/admin/events/delete-events`,data:{events}})
+                return await apiPost({url:`http://localhost:8000/api/admin/events/delete-events`,data:{events}})
             }catch(error){
                 console.log("Lỗi delete events"+error);
             }
         }else {
             Swal.fire('Từ chối xóa', '', 'info');
         }
-    }
+    },
+    deleteForeverEvents: async (events:number[])=>{
+        const result = await Swal.fire({
+            title: 'Bạn chắc chứ?',
+            text: 'Bạn có muốn xóa vĩnh viễn những sự kiện đã chọn không ?',
+            icon: 'warning',
+            showCancelButton: true,
+            confirmButtonColor: '#3085d6',
+            cancelButtonColor: '#d33',
+            confirmButtonText: 'Xóa!',
+            cancelButtonText: 'Hủy',
+        })
+        if (result.isConfirmed) {
+            try{
+                return await apiPost({url:`http://localhost:8000/api/admin/events/delete-forever-events`,data:{events}})
+            }catch(error){
+                console.log("Lỗi delete forever events"+error);
+            }
+        }else {
+            Swal.fire('Từ chối xóa vĩnh viễn', '', 'info');
+        }
+    },restoreEvents: async (events:number[])=>{
+        const result = await Swal.fire({
+            title: 'Bạn chắc chứ?',
+            text: 'Bạn có muốn phục hồi những sự kiện đã chọn không ?',
+            icon: 'question',
+            showCancelButton: true,
+            confirmButtonColor: '#2ecc71',
+            cancelButtonColor: '#d33',
+            confirmButtonText: 'Phục Hồi!',
+            cancelButtonText: 'Hủy',
+        })
+        if (result.isConfirmed) {
+            try{
+                return await apiPost({url:`http://localhost:8000/api/admin/events/restore-events`,data:{events}})
+            }catch(error){
+                console.log("Lỗi restore events"+error);
+            }
+        }else {
+            Swal.fire('Từ chối phục hồi', '', 'info');
+        }
+    },
 }
 export default EventServices;
