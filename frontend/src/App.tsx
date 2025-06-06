@@ -11,6 +11,7 @@ import EventsMN from "./pages/admin/events/events"
 import OrganizersMN from "./pages/admin/organizers/organizers"
 import CreateEditEvent from "./pages/admin/events/CreateEditEvent"
 import TrashCan from "./pages/admin/events/TrashCan"
+import CreateEditOrganizer from "./pages/admin/organizers/CreateEditOrganizer"
 function App() {
   return (
     <Router>
@@ -29,7 +30,11 @@ function App() {
             <Route path=":id?" element={<CreateEditEvent/>}/>
             <Route index element={<EventsMN/>}/>
           </Route>
-          <Route path="organizers" element={<OrganizersMN/>}/>
+          <Route path="organizers">
+            <Route path="add" element={<CreateEditOrganizer/>}/>
+            <Route path=":id?" element={<CreateEditOrganizer/>}/>
+            <Route index element={<OrganizersMN/>}/>
+          </Route>
         </Route>
       </Routes>
     </Router>

@@ -1,0 +1,23 @@
+.Nut{
+    display: inline-flex;
+    border-radius:10px;
+    padding:10px;
+    font-weight:bold;
+    align-items: center;
+    gap:6px;
+    border: 0;
+}
+.activeXoa{
+    opacity:1;
+    background-color:red;
+    color: white;
+}
+.activePhucHoi{   
+    color:white;
+    background-color: rgb(46, 204, 113);
+}
+.disable{
+    opacity:0.3;
+    background-color:rgb(175, 171, 171);
+
+}

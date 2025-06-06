@@ -7,4 +7,9 @@ type EventInputs = {
     organizers_id:number,
     status:"draft" | "published" | "cancelled"
 }
-export type { EventInputs}
+type OrganizerInputs = {
+    name:string,
+    contact_info:string,
+    description:string,
+}
+export type { EventInputs, OrganizerInputs}

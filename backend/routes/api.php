@@ -11,6 +11,8 @@ Route::get('/user', function (Request $request) {
 Route::group(['prefix'=>"admin"],function(){
     // organizers
     Route::resource("organizers",OrganizersController::class);
+    Route::post('/organizers/delete-organizers',[OrganizersController::class,'deleteOrganizers']);
+
     // events
     Route::resource("events",EventsController::class)->except('show');
     Route::prefix('events')->group(function(){
