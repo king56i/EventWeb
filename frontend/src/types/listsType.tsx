@@ -22,4 +22,9 @@ type HeaderType = {
     id:number,
     title:string
 }
-export type {OrganizerType,EventType,HeaderType}
+type RoleType = {
+    id:number,
+    name:string,
+    guard_name:string
+}
+export type {OrganizerType,EventType,HeaderType,RoleType}

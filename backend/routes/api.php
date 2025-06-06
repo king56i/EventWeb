@@ -4,6 +4,7 @@ use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Route;
 use App\Http\Controllers\Admin\EventsController;
 use App\Http\Controllers\Admin\OrganizersController;
+use App\Http\Controllers\Admin\RolesController;
 
 Route::get('/user', function (Request $request) {
     return $request->user();
@@ -12,7 +13,6 @@ Route::group(['prefix'=>"admin"],function(){
     // organizers
     Route::resource("organizers",OrganizersController::class);
     Route::post('/organizers/delete-organizers',[OrganizersController::class,'deleteOrganizers']);
-
     // events
     Route::resource("events",EventsController::class)->except('show');
     Route::prefix('events')->group(function(){
@@ -24,5 +24,9 @@ Route::group(['prefix'=>"admin"],function(){
         Route::post('/restore-events',[EventsController::class,'restoreEvents']);
 
     });
+    // roles
+    Route::resource("roles",RolesController::class);
+    Route::post('/roles/delete-roles',[RolesController::class,'deleteRoles']);
+
 
 });

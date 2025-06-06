@@ -45,18 +45,18 @@ export default function OrganizerForm(){
     return (
         <form onSubmit={handleSubmit(onSubmit)}>
             <div className={styles.inputGroup}>
-                <label htmlFor="name" className={styles.labelText}>Tiêu Đề:</label>
-                <input placeholder="Nhập tiêu đề..." className={styles.inputField} type="text" {...register("name",{required:true})} />
+                <label htmlFor="name" className={styles.labelText}>Tên:</label>
+                <input placeholder="Nhập tên..." className={styles.inputField} type="text" {...register("name",{required:true})} />
                 {errors.name && <span>This field is required</span>}
             </div>
             <div className={styles.inputGroup}>
-                <label htmlFor="contact_info" className={styles.labelText}>Mô Tả:</label>
-                <input placeholder="Nhập mô tả..." className={styles.inputField} type="text" {...register("contact_info",{required:true})} />
+                <label htmlFor="contact_info" className={styles.labelText}>Thông Tin Liên Hệ:</label>
+                <input placeholder="Nhập thông tin liên hệ..." className={styles.inputField} type="text" {...register("contact_info",{required:true})} />
                 {errors.contact_info && <span>This field is required</span>}
             </div>
             <div className={styles.inputGroup}>
-                <label htmlFor="description" className={styles.labelText}>Địa Điểm:</label>
-                <input placeholder="Nhập địa điểm tổ chức...." className={styles.inputField} type="text" {...register("description",{required:true})} />
+                <label htmlFor="description" className={styles.labelText}>Mô Tả:</label>
+                <input placeholder="Nhập mô tả...." className={styles.inputField} type="text" {...register("description",{required:true})} />
                 {errors.description && <span>This field is required</span>}
             </div>
             <button className={styles.formButton} type="submit">{id ? "Sửa":"Thêm"}</button>

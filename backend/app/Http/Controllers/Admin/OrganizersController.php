@@ -18,7 +18,7 @@ class OrganizersController extends Controller
     public function store(OrganizerRequest $organizerRequest){
         $data = $organizerRequest->validated();
         Organizers::create($data);
-        return response()->json(['success'=>true,'message'=>'Thêm thành công']);
+        return response()->json(['success'=>true,'message'=>'Thêm tổ chức thành công']);
     }
     public function edit(Organizers $organizer){
         return new OrganizersResource($organizer);
@@ -26,11 +26,11 @@ class OrganizersController extends Controller
     public function update(Organizers $organizer, OrganizerRequest $organizerRequest){
         $data = $organizerRequest->validated();
         $organizer->update($data);
-        return response()->json(['success'=>true,'message'=>'Sửa thành công']);
+        return response()->json(['success'=>true,'message'=>'Sửa tổ chức thành công']);
     }
     public function destroy(Organizers $organizer){
         $organizer->delete();
-        return response()->json(['success'=>true,'message'=>'Xóa thành công']);
+        return response()->json(['success'=>true,'message'=>'Xóa tổ chức thành công']);
     }
     public function deleteOrganizers(Request $request){
         $organizers = $request->organizers;

@@ -12,6 +12,8 @@ import OrganizersMN from "./pages/admin/organizers/organizers"
 import CreateEditEvent from "./pages/admin/events/CreateEditEvent"
 import TrashCan from "./pages/admin/events/TrashCan"
 import CreateEditOrganizer from "./pages/admin/organizers/CreateEditOrganizer"
+import CreateEditRole from "./pages/admin/roles/CreateEditRole"
+import RolesMN from "./pages/admin/roles/roles"
 function App() {
   return (
     <Router>
@@ -34,6 +36,11 @@ function App() {
             <Route path="add" element={<CreateEditOrganizer/>}/>
             <Route path=":id?" element={<CreateEditOrganizer/>}/>
             <Route index element={<OrganizersMN/>}/>
+          </Route>
+          <Route path="roles">
+            <Route path="add" element={<CreateEditRole/>}/>
+            <Route path=":id?" element={<CreateEditRole/>}/>
+            <Route index element={<RolesMN/>}/>
           </Route>
         </Route>
       </Routes>

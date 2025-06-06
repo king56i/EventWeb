@@ -20839,6 +20839,8 @@ pre[class*=language-]:before {
 
 .pcoded-navbar .pcoded-inner-navbar li.pcoded-hasmenu .pcoded-submenu {
     display: none;
+     overflow: hidden;
+    transition: all 0.3s ease-out; /* Thêm transition cho chiều cao */
 }
 
 .pcoded-navbar .pcoded-inner-navbar li.pcoded-hasmenu .pcoded-submenu a:after {

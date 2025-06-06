@@ -22,7 +22,7 @@ class EventsController extends Controller
     public function store (EventRequest $eventRequest){
         $data =  $eventRequest->validated();
         Events::create($data);
-        return response()->json(['success'=>true,'message'=>'Thêm thành công']);
+        return response()->json(['success'=>true,'message'=>'Thêm sự kiện thành công']);
     }
     public function edit(Events $event){
         $event->load('organizer');
@@ -31,12 +31,12 @@ class EventsController extends Controller
     public function update(Events $event,EventRequest $eventRequest){
         $data = $eventRequest->validated();
         $event->update($data);
-        return response()->json(['success'=>true,'message'=>'Sửa thành công']);
+        return response()->json(['success'=>true,'message'=>'Sửa sự kiện thành công']);
 
     }
     public function destroy(Events $event){
         $event->delete();
-        return response()->json(['success'=>true,'message'=>'Xóa thành công']);
+        return response()->json(['success'=>true,'message'=>'Xóa sự kiện thành công']);
     }
     public function trashcan(){
         $events = Events::with(['organizer'])->onlyTrashed()->get();
@@ -48,13 +48,13 @@ class EventsController extends Controller
             return response()->json(['success' => false, 'message' => 'Sự kiện chưa bị xóa'], 400);
         }
         $event->restore();
-        return response()->json(['success'=>true,'message'=>'Phục hồi thành công']);
+        return response()->json(['success'=>true,'message'=>'Phục hồi sự kiện thành công']);
 
     }
     public function forceDelete( $id){
         $event = Events::withTrashed()->find($id);
         $event->forceDelete();
-        return response()->json(['success'=>true,'message'=>'Xóa vĩnh viễn thành công']);
+        return response()->json(['success'=>true,'message'=>'Xóa vĩnh viễn sự kiện thành công']);
     }
     public function deleteEvents(Request $request){
         $events = $request->events;

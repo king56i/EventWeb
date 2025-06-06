@@ -1,6 +1,8 @@
+import { useState } from "react";
 import { Link } from "react-router-dom";
 
 export default function NavBarADM ({NavBar}:{NavBar:boolean}){
+    const [trigger,setTrigger] = useState(false)
     return (<>
         <nav className={!NavBar ? "pcoded-navbar":`pcoded-navbar navbar-collapsed`}>
             <div className="navbar-wrapper" style={{height:"100vh"}}>
@@ -19,12 +21,18 @@ export default function NavBarADM ({NavBar}:{NavBar:boolean}){
                         <li className="nav-item">
                             <Link to="/admin/organizers" className="nav-link "><span className="pcoded-micon"><i className="feather icon-align-justify"></i></span><span className="pcoded-mtext">Danh Sách Organizers</span></Link>
                         </li>
-                        <li className="nav-item pcoded-hasmenu">
+                        <li onClick={()=>setTrigger(!trigger)} className={trigger ?`nav-item pcoded-hasmenu pcoded-trigger`:`nav-item pcoded-hasmenu`}>
                             <a href="#!" className="nav-link "><span className="pcoded-micon"><i className="feather icon-box"></i></span><span className="pcoded-mtext">Action</span></a>
-                            <ul className="pcoded-submenu">
+                            <ul className="pcoded-submenu" style={trigger ?{display:'block'}:{display:'none'}}>
                                 <li><a href="">Thêm</a></li>
                                 <li><a href="">Thùng rác</a></li>
                             </ul>
+                        </li>
+                        <li className="nav-item pcoded-menu-caption">
+                            <label>Roles</label>
+                        </li>
+                        <li className="nav-item">
+                            <Link to="/admin/roles" className="nav-link "><span className="pcoded-micon"><i className="feather icon-align-justify"></i></span><span className="pcoded-mtext">Danh Sách Vai Trò</span></Link>
                         </li>
                         <li className="nav-item pcoded-menu-caption">
                             <label>Notifications</label>
