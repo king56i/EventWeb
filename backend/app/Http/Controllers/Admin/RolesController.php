@@ -42,7 +42,9 @@ class RolesController extends Controller
         return response()->json(['success'=>true,'message'=>'Xóa những vai trò đã chọn thành công']);
     }
     public function addPermsToRole(Role $role){
-        $rolePerms = new RoleHasPermissionsResource(RoleHasPermissions::where('role_id',$role->id)->pluck('permission_id','permission_id')->all());
+        $rolePerms = RoleHasPermissions::where('role_id', $role->id)
+        ->pluck('permission_id')
+        ->toArray();
         return response()->json([
             'rolePermissions'=>$rolePerms,
             'role'=>$role,
@@ -50,9 +52,9 @@ class RolesController extends Controller
     }
     public function givePermsToRole(Role $role,Request $request){
         $request->validate([
-            'permission'=>'required'
+            'permissions'=>'required'
         ]);
-        $role->syncPermissions($request->permission);
-        return response()->json(['success'=>true,'message'=>'Thêm quyền vào vai trò thành công']);
+        $role->syncPermissions(array_map('intval', $request->permissions));
+        return response()->json(['success'=>true,'message'=>'Sửa quyền vào vai trò thành công']);
     }
 }

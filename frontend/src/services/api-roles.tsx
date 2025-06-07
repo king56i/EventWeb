@@ -59,7 +59,7 @@ const RoleServices ={
     getPerms: async(id:number)=>{
         return await apiGet({url:`http://localhost:8000/api/admin/roles/${id}/add-perms-to-role`});
     },
-    givePerms: async({id,data}:{id:number,data:{permission:number[]}})=>{
+    givePerms: async({id,data}:{id:number,data:{permissions:string[]}})=>{
         return await apiPut({url:`http://localhost:8000/api/admin/roles/${id}/add-perms-to-role`,data});
     }
     

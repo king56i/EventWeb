@@ -7,15 +7,15 @@ import { PermissionServices } from "@src/services/api-permissions";
 import type { PermissionType } from "@src/types/listsType";
 import Swal from "sweetalert2";
 export default function AddPermsForm(){
-    const { register, handleSubmit, formState: { errors },reset } = useForm<{permission:number[]}>();
+    const { register, handleSubmit, formState: { errors },reset, } = useForm<{permissions:string[]}>();
     const [perms,setPerms] = useState<PermissionType[]|null>(null);
-    const [rolePerms,setRolePerms] = useState<{permission:number[]}|null>(null);
+    const [rolePerms,setRolePerms] = useState<string[]|null>(null);
     const {id} = useParams();
     const navigate = useNavigate();
     useEffect(()=>{
         const fetchPermissions = async()=>{
             const res = await PermissionServices.getPermissions();
-            res&&res.data&&setPerms(res?.data.data);
+            setPerms(res?.data.data);
         }
         fetchPermissions();
     },[])
@@ -25,16 +25,17 @@ export default function AddPermsForm(){
         }
         const fetchRolePerms = async (id:string)=>{
             const res = await RoleServices.getPerms(parseInt(id));
-            setRolePerms(res?.data.data.rolePermissions);
+            setRolePerms(res?.data.rolePermissions.map(String));
         } 
         fetchRolePerms(id)
+
     },[id])
     useEffect(()=>{
-        if (rolePerms && rolePerms.permission) {
-        reset({ permission: rolePerms.permission });
+        if (rolePerms&&perms) {
+        reset({permissions:rolePerms});
     }
     },[rolePerms,reset]);
-    const onSubmit = async (data:{permission:number[]})=>{
+    const onSubmit = async (data:{permissions:string[]})=>{
         try {
             const res = id && await RoleServices.givePerms({id:parseInt(id),data});
             if (res&&res.data&&res?.data.success) {
@@ -54,14 +55,21 @@ export default function AddPermsForm(){
     return(
         <form onSubmit={handleSubmit(onSubmit)}>
             {perms?.map(perm => 
-                <div className={styles.inputGroup}>
-                    <label htmlFor="permission[]" className={styles.labelText}>
-                        <input type="checkbox" className={styles.inputField}   defaultChecked={rolePerms?.permission?.includes(perm.id)} {...register("permission",{required:true})} />
-                        {perm.name}
+                <div key={perm.id} className={styles.inputGroup}>
+                    <label htmlFor={`permission-${perm.id}`} className={styles.labelText}>
+                        <input 
+                            type="checkbox" 
+                            className={styles.inputField} 
+                            id={`permission-${perm.id}`}
+                            value = {perm.id}
+                            {...register("permissions", { required: true })}
+                        />
+                        {perm.name}{perm.id}
                     </label>
                 </div>
             )}
-            {errors.permission && <span>This field is required</span>}
+            {errors.permissions && <span>This field is required</span>}
+            <button className={styles.formButton} type="submit">Xác Nhận</button>
         </form>
     )
 }
