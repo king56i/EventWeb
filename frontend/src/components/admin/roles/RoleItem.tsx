@@ -22,6 +22,7 @@ export default function RoleItem({item,roles,setRoles}:RoleItemProps){
         <td>{truncateText(item.guard_name,50)}</td>
         <td>
             <div style={{display:"flex",justifyContent:"space-evenly"}} >
+                <Link to={`/admin/roles/${item.id}/add-perms-to-role/`} className="btn-edit">Thêm Quyền Vào Vai Trò</Link>
                 <Link to={`/admin/roles/${item.id}`} className="btn-edit">Sửa</Link>
                 <button onClick={()=>handleAction('xoaRole',item.id,roles,setRoles,dispatch,handleItemsSuccess)} className="btn-delete">Xóa</button>
             </div>

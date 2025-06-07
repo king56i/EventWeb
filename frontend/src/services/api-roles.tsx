@@ -55,6 +55,12 @@ const RoleServices ={
         }else{
             Swal.fire('Từ chối xóa','','info')
         }
+    },
+    getPerms: async(id:number)=>{
+        return await apiGet({url:`http://localhost:8000/api/admin/roles/${id}/add-perms-to-role`});
+    },
+    givePerms: async({id,data}:{id:number,data:{permission:number[]}})=>{
+        return await apiPut({url:`http://localhost:8000/api/admin/roles/${id}/add-perms-to-role`,data});
     }
     
 }

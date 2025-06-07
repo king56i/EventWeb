@@ -14,6 +14,7 @@ import TrashCan from "./pages/admin/events/TrashCan"
 import CreateEditOrganizer from "./pages/admin/organizers/CreateEditOrganizer"
 import CreateEditRole from "./pages/admin/roles/CreateEditRole"
 import RolesMN from "./pages/admin/roles/roles"
+import AddPermsToRole from "./pages/admin/roles/AddPermsToRole"
 function App() {
   return (
     <Router>
@@ -40,6 +41,7 @@ function App() {
           <Route path="roles">
             <Route path="add" element={<CreateEditRole/>}/>
             <Route path=":id?" element={<CreateEditRole/>}/>
+            <Route path=":id/add-perms-to-role" element={<AddPermsToRole/>}/>
             <Route index element={<RolesMN/>}/>
           </Route>
         </Route>

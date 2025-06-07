@@ -5,6 +5,7 @@ use Illuminate\Support\Facades\Route;
 use App\Http\Controllers\Admin\EventsController;
 use App\Http\Controllers\Admin\OrganizersController;
 use App\Http\Controllers\Admin\RolesController;
+use App\Http\Controllers\Admin\PermissionsController;
 
 Route::get('/user', function (Request $request) {
     return $request->user();
@@ -26,7 +27,13 @@ Route::group(['prefix'=>"admin"],function(){
     });
     // roles
     Route::resource("roles",RolesController::class);
-    Route::post('/roles/delete-roles',[RolesController::class,'deleteRoles']);
+    Route::prefix('roles')->group(function(){
+        Route::post('/delete-roles',[RolesController::class,'deleteRoles']);
+        Route::get('/{role}/add-perms-to-role',[RolesController::class,'addPermsToRole']);
+        Route::put('/{role}/add-perms-to-role',[RolesController::class,'givePermsToRole']);
+    });
+    // permissions
+    Route::resource('permissions',PermissionsController::class);
 
 
 });

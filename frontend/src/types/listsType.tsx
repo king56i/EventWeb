@@ -27,4 +27,9 @@ type RoleType = {
     name:string,
     guard_name:string
 }
-export type {OrganizerType,EventType,HeaderType,RoleType}
+type PermissionType = {
+    id:number,
+    name:string,
+    guard_name:string
+}
+export type {OrganizerType,EventType,HeaderType,RoleType,PermissionType}
