@@ -20,4 +20,10 @@ type PermissionInputs = {
     name:string,
     guard_name:string
 }
-export type { EventInputs, OrganizerInputs, RoleInputs,PermissionInputs}
+type UserInputs = {
+    name:string,
+    email:string,
+    password:string,
+    roles:string[]
+}
+export type { EventInputs, OrganizerInputs, RoleInputs,PermissionInputs,UserInputs }

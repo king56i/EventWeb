@@ -1,5 +1,6 @@
 <?php
 
+use App\Http\Controllers\Admin\UsersController;
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Route;
 use App\Http\Controllers\Admin\EventsController;
@@ -35,7 +36,7 @@ Route::group(['prefix'=>"admin"],function(){
     // permissions
     Route::resource('permissions',PermissionsController::class);
     Route::post('permissions/delete-permissions',[PermissionsController::class,'deletePermissions']);
-
-
-
+    // users
+    Route::resource('users',UsersController::class);
+    Route::post('users/delete-users',[UsersController::class,'deleteUsers']);
 });

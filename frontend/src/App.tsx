@@ -17,6 +17,8 @@ import RolesMN from "./pages/admin/roles/roles"
 import AddPermsToRole from "./pages/admin/roles/AddPermsToRole"
 import CreateEditPerm from "./pages/admin/permissions/CreateEditPerm"
 import PermsMN from "./pages/admin/permissions/permissions"
+import CreateEditUser from "./pages/admin/users/CreateEditUser"
+import UsersMN from "./pages/admin/users/users"
 function App() {
   return (
     <Router>
@@ -50,6 +52,11 @@ function App() {
             <Route path="add" element={<CreateEditPerm/>}/>
             <Route path=":id?" element={<CreateEditPerm/>}/>
             <Route index element={<PermsMN/>}/>
+          </Route>
+          <Route path="users">
+            <Route path="add" element={<CreateEditUser/>}/>
+            <Route path=":id?" element={<CreateEditUser/>}/>
+            <Route index element={<UsersMN/>}/>
           </Route>
         </Route>
       </Routes>

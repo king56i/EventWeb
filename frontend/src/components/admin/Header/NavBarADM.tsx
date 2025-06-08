@@ -40,11 +40,17 @@ export default function NavBarADM ({NavBar}:{NavBar:boolean}){
                         <li className="nav-item">
                             <Link to="/admin/permissions" className="nav-link "><span className="pcoded-micon"><i className="feather icon-align-justify"></i></span><span className="pcoded-mtext">Danh Sách Quyền Lợi</span></Link>
                         </li>
+                         <li className="nav-item pcoded-menu-caption">
+                            <label>Users</label>
+                        </li>
+                        <li className="nav-item">
+                            <Link to="/admin/users" className="nav-link "><span className="pcoded-micon"><i className="feather icon-align-justify"></i></span><span className="pcoded-mtext">Danh Sách Người Dùng</span></Link>
+                        </li>
                         <li className="nav-item pcoded-menu-caption">
                             <label>Notifications</label>
                         </li>
                         <li className="nav-item">
-                            <a href="" className="nav-link "><span className="pcoded-micon"><i className="feather icon-align-justify"></i></span><span className="pcoded-mtext">Danh Sách Người Dùng</span></a>
+                            <a href="" className="nav-link "><span className="pcoded-micon"><i className="feather icon-align-justify"></i></span><span className="pcoded-mtext">#</span></a>
                         </li>
                         <li className="nav-item pcoded-hasmenu">
                             <a href="#!" className="nav-link "><span className="pcoded-micon"><i className="feather icon-box"></i></span><span className="pcoded-mtext">Action</span></a>

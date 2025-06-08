@@ -1,19 +1,19 @@
 import { useContext, useEffect, useState } from "react"
-import type { HeaderType, RoleType } from "@src/types/listsType";
+import type { HeaderType, UserType } from "@src/types/listsType";
 import { ManageContext } from "@src/context/ManageContext";
 import { Link } from "react-router-dom";
 import styles from "@scss/admin/Table/table.module.scss"
 import { handleAction } from "@src/utils/manage-actions";
-import RoleItem from "./RoleItem";
-import RoleServices from "@src/services/api-roles";
+import UserItem from "./UserItem";
+import UserServices from "@src/services/api-users";
 export default function UserTable({headers}:{headers:HeaderType[]}){
-    const [roles,setRoles] = useState<RoleType[]>([]);
+    const [users,setUsers] = useState<UserType[]>([]);
     const {checkBoxes,handleItemsSuccess,dispatch} = useContext(ManageContext);
     useEffect(()=>{
         const fetchList = async ()=>{
             try {
-                const res = await RoleServices.getRoles();
-                setRoles(res?.data.data);
+                const res = await UserServices.getUsers();
+                setUsers(res?.data.data);
             } catch (error) {
                 console.error("Lỗi khi gọi API:", error);
             }
@@ -23,9 +23,9 @@ export default function UserTable({headers}:{headers:HeaderType[]}){
     return (
     <>
     <div className="cardHeader">
-        <h2>Roles</h2>
-        <Link to="/admin/roles/add" className="btn-add">Thêm Vai Trò</Link>
-        <button className={`${checkBoxes.length > 0 ? styles.activeXoa:styles.disabled} ${styles.Nut}`} {...(checkBoxes.length > 0 ? {} : { disabled: true })} onClick={()=>handleAction('xoaRoles',checkBoxes,roles,setRoles,dispatch,handleItemsSuccess)} >
+        <h2>Users</h2>
+        <Link to="/admin/users/add" className="btn-add">Thêm Người Dùng</Link>
+        <button className={`${checkBoxes.length > 0 ? styles.activeXoa:styles.disabled} ${styles.Nut}`} {...(checkBoxes.length > 0 ? {} : { disabled: true })} onClick={()=>handleAction('xoaUsers',checkBoxes,users,setUsers,dispatch,handleItemsSuccess)} >
             <svg viewBox="0 0 15 17.5" height="17.5" width="15" xmlns="http://www.w3.org/2000/svg" className="icon">
                 <path
                     {...(checkBoxes.length > 0 ? {fill:"white"}:{fill:"rgb(175, 171, 171)"})}
@@ -42,7 +42,7 @@ export default function UserTable({headers}:{headers:HeaderType[]}){
             <tr>     
                 <th>
                     <label className="container">
-                        <input type="checkbox" onClick={(e:any)=>dispatch({type:e.target.checked ? "addAll":"removeAll",payload: roles.map(item => item.id)})}/>
+                        <input type="checkbox" onClick={(e:any)=>dispatch({type:e.target.checked ? "addAll":"removeAll",payload: users.map(item => item.id)})}/>
                         <div className="checkmark"></div>
                     </label>
                 </th>               
@@ -51,7 +51,7 @@ export default function UserTable({headers}:{headers:HeaderType[]}){
             </tr>
         </thead>
         <tbody>
-            {roles.map(item=> <RoleItem key={item.id} roles={roles} setRoles={setRoles} item={item}/>)}
+            {users.map(item=> <UserItem key={item.id} users={users} setUsers={setUsers} item={item}/>)}
         </tbody>
     </table>
     

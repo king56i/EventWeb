@@ -2,11 +2,12 @@ import EventServices from "@src/services/api-events";
 import OrganizerServices from "@src/services/api-organizers";
 import PermissionServices from "@src/services/api-permissions";
 import RoleServices from "@src/services/api-roles";
-import type { EventType, OrganizerType, RoleType } from "@src/types/listsType";
+import UserServices from "@src/services/api-users";
+import type { EventType, OrganizerType, PermissionType, RoleType, UserType } from "@src/types/listsType";
 import type { Dispatch } from "react";
 
 
-export async function handleAction<T extends EventType | OrganizerType | RoleType>(
+export async function handleAction<T extends EventType | OrganizerType | RoleType | PermissionType | UserType>(
   action: string,
   checkBoxes: number|number[], 
   list: T[], 
@@ -53,6 +54,12 @@ export async function handleAction<T extends EventType | OrganizerType | RoleTyp
         break;
       case "xoaPerms":
         res = await PermissionServices.deletePermissions(ids);
+        break;
+      case "xoaUser":
+        res= await UserServices.deleteUser(ids[0]);
+        break;
+      case "xoaUsers":
+        res = await UserServices.deleteUsers(ids);
         break;
       default:
         throw new Error("Hành động không hợp lệ");

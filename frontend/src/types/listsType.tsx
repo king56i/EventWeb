@@ -32,4 +32,11 @@ type PermissionType = {
     name:string,
     guard_name:string
 }
-export type {OrganizerType,EventType,HeaderType,RoleType,PermissionType}
+type UserType = {
+    id:number,
+    name:string,
+    email:string,
+    password:string,
+    roles:string[]
+}
+export type {OrganizerType,EventType,HeaderType,RoleType,PermissionType,UserType}
