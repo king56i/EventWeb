@@ -3,7 +3,7 @@ import { useForm } from "react-hook-form";
 import { useNavigate, useParams } from "react-router-dom";
 import styles from "@scss/admin/Form/form.module.scss";
 import RoleServices from "@src/services/api-roles";
-import { PermissionServices } from "@src/services/api-permissions";
+import PermissionServices from "@src/services/api-permissions";
 import type { PermissionType } from "@src/types/listsType";
 import Swal from "sweetalert2";
 export default function AddPermsForm(){
@@ -64,7 +64,7 @@ export default function AddPermsForm(){
                             value = {perm.id}
                             {...register("permissions", { required: true })}
                         />
-                        {perm.name}{perm.id}
+                        {perm.name}
                     </label>
                 </div>
             )}

@@ -34,6 +34,8 @@ Route::group(['prefix'=>"admin"],function(){
     });
     // permissions
     Route::resource('permissions',PermissionsController::class);
+    Route::post('permissions/delete-permissions',[PermissionsController::class,'deletePermissions']);
+
 
 
 });

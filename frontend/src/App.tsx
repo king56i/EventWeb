@@ -15,6 +15,8 @@ import CreateEditOrganizer from "./pages/admin/organizers/CreateEditOrganizer"
 import CreateEditRole from "./pages/admin/roles/CreateEditRole"
 import RolesMN from "./pages/admin/roles/roles"
 import AddPermsToRole from "./pages/admin/roles/AddPermsToRole"
+import CreateEditPerm from "./pages/admin/permissions/CreateEditPerm"
+import PermsMN from "./pages/admin/permissions/permissions"
 function App() {
   return (
     <Router>
@@ -43,6 +45,11 @@ function App() {
             <Route path=":id?" element={<CreateEditRole/>}/>
             <Route path=":id/add-perms-to-role" element={<AddPermsToRole/>}/>
             <Route index element={<RolesMN/>}/>
+          </Route>
+          <Route path="permissions">
+            <Route path="add" element={<CreateEditPerm/>}/>
+            <Route path=":id?" element={<CreateEditPerm/>}/>
+            <Route index element={<PermsMN/>}/>
           </Route>
         </Route>
       </Routes>

@@ -35,6 +35,12 @@ export default function NavBarADM ({NavBar}:{NavBar:boolean}){
                             <Link to="/admin/roles" className="nav-link "><span className="pcoded-micon"><i className="feather icon-align-justify"></i></span><span className="pcoded-mtext">Danh Sách Vai Trò</span></Link>
                         </li>
                         <li className="nav-item pcoded-menu-caption">
+                            <label>Permissions</label>
+                        </li>
+                        <li className="nav-item">
+                            <Link to="/admin/permissions" className="nav-link "><span className="pcoded-micon"><i className="feather icon-align-justify"></i></span><span className="pcoded-mtext">Danh Sách Quyền Lợi</span></Link>
+                        </li>
+                        <li className="nav-item pcoded-menu-caption">
                             <label>Notifications</label>
                         </li>
                         <li className="nav-item">

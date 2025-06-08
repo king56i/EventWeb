@@ -1,5 +1,6 @@
 import EventServices from "@src/services/api-events";
 import OrganizerServices from "@src/services/api-organizers";
+import PermissionServices from "@src/services/api-permissions";
 import RoleServices from "@src/services/api-roles";
 import type { EventType, OrganizerType, RoleType } from "@src/types/listsType";
 import type { Dispatch } from "react";
@@ -46,6 +47,12 @@ export async function handleAction<T extends EventType | OrganizerType | RoleTyp
         break;
       case "xoaRoles":
         res = await RoleServices.deleteRoles(ids);
+        break;
+      case "xoaPerm":
+        res= await PermissionServices.deletePermission(ids[0]);
+        break;
+      case "xoaPerms":
+        res = await PermissionServices.deletePermissions(ids);
         break;
       default:
         throw new Error("Hành động không hợp lệ");
