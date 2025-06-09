@@ -9,10 +9,22 @@ use Illuminate\Http\Request;
 use App\Http\Resources\EventsResource;
 use App\Http\Resources\OrganizersResource;
 use App\Models\Organizers;
+use Illuminate\Routing\Controllers\HasMiddleware;
+use Illuminate\Routing\Controllers\Middleware;
 
-class EventsController extends Controller
+class EventsController extends Controller implements HasMiddleware
 {
     //
+    public static function middleware(){
+        return [
+            new Middleware('permission:create event',only:['store','create']),
+            new Middleware('permission:forceDelete event',only:['forceDelete','deleteForeverEvents','trashcan']),
+            new Middleware('permission:restore event',only:['restore','restoreEvents']),
+            new Middleware('permission:delete event',only:['destroy','deleteEvents']),
+            new Middleware('permission:update event',only:['edit','update']),
+            new Middleware('permission:view event',only:['index']),
+        ];
+    }
     public function index(){
         $events = Events::with(['organizer'])->get();
         return EventsResource::collection($events);

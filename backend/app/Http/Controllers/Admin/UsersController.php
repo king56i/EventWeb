@@ -8,10 +8,21 @@ use App\Http\Resources\UsersResource;
 use App\Models\ModelHasRoles;
 use App\Models\User;
 use Illuminate\Http\Request;
+use Illuminate\Routing\Controllers\HasMiddleware;
+use Illuminate\Routing\Controllers\Middleware;
 
-class UsersController extends Controller
+class UsersController extends Controller implements HasMiddleware
 {
     //
+    public static function middleware()
+    {
+        return [
+            new Middleware('permission:update user',only:['update','edit']),
+            new Middleware('permission:create user',only:['create','store']),
+            new Middleware('permission:delete user',only:['destroy','deleteUsers']),
+            new Middleware('permission:view user',only:['index']),
+        ];
+    }
     public function index(){
         $users = User::all();
         return UsersResource::collection($users);

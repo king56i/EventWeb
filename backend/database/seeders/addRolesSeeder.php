@@ -33,7 +33,7 @@ class addRolesSeeder extends Seeder
                 [
                     'id'=>3,
                     'name' => 'user',
-                    'guard_name' => 'web',
+                    'guard_name' => 'api',
                     'created_at'=>now(),
                     'updated_at'=>now()
                 ]

@@ -7,10 +7,21 @@ use App\Http\Requests\OrganizerRequest;
 use App\Http\Resources\OrganizersResource;
 use App\Models\Organizers;
 use Illuminate\Http\Request;
+use Illuminate\Routing\Controllers\HasMiddleware;
+use Illuminate\Routing\Controllers\Middleware;
 
-class OrganizersController extends Controller
+class OrganizersController extends Controller implements HasMiddleware
 {
     //
+    public static function middleware()
+    {
+        return [
+            new Middleware('permission:create organizer',only:['store','create']),
+            new Middleware('permission:delete organizer',only:['destroy','deleteOrganizers']),
+            new Middleware('permission:update organizer',only:['update','edit']),
+            new Middleware('permission:view organizer',only:['index']),
+        ];
+    }
     public function index(){
         $organizers = Organizers::all();
         return OrganizersResource::collection($organizers);

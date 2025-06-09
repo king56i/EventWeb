@@ -19,6 +19,8 @@ import CreateEditPerm from "./pages/admin/permissions/CreateEditPerm"
 import PermsMN from "./pages/admin/permissions/permissions"
 import CreateEditUser from "./pages/admin/users/CreateEditUser"
 import UsersMN from "./pages/admin/users/users"
+import Login from "./pages/user/Login"
+import Register from "./pages/user/Register"
 function App() {
   return (
     <Router>
@@ -29,6 +31,8 @@ function App() {
           <Route path="/events" element={<Events/>}/>
           <Route path="/payment" element={<ThanhToan/>}/>
           <Route path="/contact" element={<Contact/>}/>
+          <Route path="/login" element={<Login/>}/>
+          <Route path="/register" element={<Register/>}/>
         </Route>
         <Route path="/admin" element={<AdminTemplate/>}>
           <Route path="events">

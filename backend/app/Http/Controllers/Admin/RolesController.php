@@ -9,12 +9,25 @@ use App\Http\Resources\RoleHasPermissionsResource;
 use App\Http\Resources\RolesResource;
 use App\Models\RoleHasPermissions;
 use Illuminate\Http\Request;
+use Illuminate\Routing\Controllers\HasMiddleware;
+use Illuminate\Routing\Controllers\Middleware;
 use Spatie\Permission\Models\Permission;
 use Spatie\Permission\Models\Role;
 
-class RolesController extends Controller
+class RolesController extends Controller implements HasMiddleware
 {
     //
+    public static function middleware()
+    {
+        return [
+            new Middleware('permission:create role',only:['store','create']),
+            new Middleware('permission:update role',only:['update','edit']),
+            new Middleware('permission:delete role',only:['destroy','deleteRoles']),
+            new Middleware('permission:view role',only:['index']),
+            new Middleware('permission:give perms',only:['addPermsToRole','givePermsToRole']),
+            
+        ];
+    }
     public function index(){
         $roles = Role::all();
         return RolesResource::collection($roles);

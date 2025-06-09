@@ -1,6 +1,7 @@
 <?php
 
 use App\Http\Controllers\Admin\UsersController;
+use App\Http\Controllers\AuthController;
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Route;
 use App\Http\Controllers\Admin\EventsController;
@@ -8,10 +9,7 @@ use App\Http\Controllers\Admin\OrganizersController;
 use App\Http\Controllers\Admin\RolesController;
 use App\Http\Controllers\Admin\PermissionsController;
 
-Route::get('/user', function (Request $request) {
-    return $request->user();
-})->middleware('auth:sanctum');
-Route::group(['prefix'=>"admin"],function(){
+Route::group(['middleware'=>['role:admin|employee','auth:api'],'prefix'=>"admin"],function(){
     // organizers
     Route::resource("organizers",OrganizersController::class);
     Route::post('/organizers/delete-organizers',[OrganizersController::class,'deleteOrganizers']);
@@ -39,4 +37,11 @@ Route::group(['prefix'=>"admin"],function(){
     // users
     Route::resource('users',UsersController::class);
     Route::post('users/delete-users',[UsersController::class,'deleteUsers']);
+    // dn-dk
+});
+Route::post('/register', [AuthController::class, 'register']);
+Route::post('/login', [AuthController::class, 'login']);
+Route::post('/logout', [AuthController::class, 'logout'])->middleware('auth:sanctum');
+Route::middleware('auth:sanctum')->get('/user', function (Request $request) {
+    return $request->user();
 });

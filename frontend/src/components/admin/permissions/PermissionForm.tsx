@@ -1,4 +1,4 @@
-import axios from "axios";
+import axios from "@src/utils/axios-customize";
 import { useEffect, useState } from "react";
 import { useForm } from "react-hook-form";
 import type { PermissionInputs } from "@src/types/formsType";

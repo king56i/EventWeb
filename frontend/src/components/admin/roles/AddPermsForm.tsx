@@ -55,18 +55,16 @@ export default function AddPermsForm(){
     return(
         <form onSubmit={handleSubmit(onSubmit)}>
             {perms?.map(perm => 
-                <div key={perm.id} className={styles.inputGroup}>
-                    <label htmlFor={`permission-${perm.id}`} className={styles.labelText}>
-                        <input 
-                            type="checkbox" 
-                            className={styles.inputField} 
-                            id={`permission-${perm.id}`}
-                            value = {perm.id}
-                            {...register("permissions", { required: true })}
-                        />
-                        {perm.name}
-                    </label>
-                </div>
+                <label htmlFor={`permission-${perm.id}`} className={styles.labelText}>
+                    <input 
+                        type="checkbox" 
+                        className={styles.inputField} 
+                        id={`permission-${perm.id}`}
+                        value = {perm.id}
+                        {...register("permissions", { required: true })}
+                    />
+                    {perm.name}
+                </label>
             )}
             {errors.permissions && <span>This field is required</span>}
             <button className={styles.formButton} type="submit">Xác Nhận</button>

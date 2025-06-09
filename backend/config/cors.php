@@ -15,13 +15,13 @@ return [
     |
     */
 
-    'paths' => ['api/*','admin/*', 'sanctum/csrf-cookie'],
+    'paths' => ['api/*','admin/*','register','login'],
     'allowed_methods' => ['*'],
     'allowed_origins' => ['*'], // URL frontend
     'allowed_origins_patterns' => [],
     'allowed_headers' => ['*'],
     'exposed_headers' => [],
     'max_age' => 0,
-    'supports_credentials' => true,
+    'supports_credentials' => false,
 
 ];

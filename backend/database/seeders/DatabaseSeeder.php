@@ -20,7 +20,8 @@ class DatabaseSeeder extends Seeder
             EventsSeeder::class,
             addRolesSeeder::class,
             addPermissionsSeeder::class,
-            addPermsToRole::class
+            addPermsToRole::class,
+            modelAdmin::class,
         ]);
     }
 }
