@@ -4,7 +4,7 @@ import Footer from "../components/user/Footer/Footer";
 
 export default function UserTemplate(){
     return <>
-    <Header/>
+    <Header />
         <Outlet/>
     <Footer/>
     </>

@@ -1,6 +1,8 @@
-import { Link } from "react-router-dom";
+import { apiPost } from "@src/services/api-action";
+import { Link, useNavigate } from "react-router-dom";
 
 export default function NavBar(){
+const navigate = useNavigate();
     return (
         <nav className="navbar navbar-expand-lg bg-dark navbar-dark shadow-sm py-3 py-lg-0 px-3 px-lg-0">
             <a href="index.html" className="navbar-brand d-block d-lg-none">
@@ -23,6 +25,12 @@ export default function NavBar(){
                         </div>
                     </div>
                     <Link to="/contact" className="nav-item nav-link">Liên Hệ</Link>
+                    {localStorage.getItem('token') &&
+                    <button onClick={()=>{
+                        apiPost({url:'http://localhost:8000/api/logout'})
+                        navigate('/')
+                    }} className="nav-item nav-link">Đăng xuất</button>
+                    }
                 </div>
             </div>
         </nav>

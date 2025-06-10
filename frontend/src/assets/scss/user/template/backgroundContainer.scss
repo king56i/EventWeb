@@ -1,0 +1,15 @@
+.background-container{
+    background-image: url('@images/user/login-register/background-image.avif');
+    object-fit: cover;
+    max-width: 100%;
+    background-attachment: fixed;
+    background-color: #1a1b2e;
+    background-blend-mode: overlay;
+    background-size: cover;
+    background-position: center;
+    height: 100vh;
+    display: flex
+;
+    justify-content: center;
+    align-items: center;
+}

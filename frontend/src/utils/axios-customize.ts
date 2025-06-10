@@ -1,6 +1,6 @@
 import axios from "axios";
 import { message } from "antd";
-import { SwalNotification } from "../components/thong-bao";
+import { AntNotification } from "../components/thong-bao";
 
 
 const baseUrl = import.meta.env.VITE_API_URL;
@@ -36,17 +36,17 @@ instance.interceptors.response.use(
   async function (error) {
     const originalRequest = error.config;
     if (error.response && error.response.status === 401) {
-      SwalNotification.showNotification(
+      AntNotification.showNotification(
         "Không có quyền truy cập",
         "Tài khoản của bạn đã bị khóa.",
         "error"
       );
       localStorage.removeItem("token");
-      window.location.replace("/login");
+      // window.location.replace("/login");
     }
     if (error.response && error.response.status === 403) {
       window.location.replace("/admin/forbidden");
-      SwalNotification.showNotification(
+      AntNotification.showNotification(
         "Không có quyền truy cập",
         "Bạn không có quyền thực hiện hành động này.",
         "warning"

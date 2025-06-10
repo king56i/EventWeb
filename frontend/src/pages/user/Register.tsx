@@ -3,6 +3,7 @@ import styles from '@scss/admin/Form/form.module.scss';
 import { apiPost } from "@src/services/api-action";
 import Swal from "sweetalert2";
 import { useNavigate } from "react-router-dom";
+import '@scss/user/template/backgroundContainer.scss';
 export default function Register(){
     const navigate = useNavigate();
     const {register,handleSubmit,formState:{errors}}=useForm<{name:string,email:string,password:string}>();
@@ -22,7 +23,7 @@ export default function Register(){
         }
     }
     return (
-        <>
+        <div className="background-container" style={{height:'100vh'}}>
             <form onSubmit={handleSubmit(onSubmit)}>
                 <div className={styles.inputGroup}>
                     <label htmlFor="name" className={styles.labelText}>Name:</label>
@@ -41,6 +42,6 @@ export default function Register(){
                 </div>
                 <button className={styles.formButton} type="submit">Đăng Nhâp</button>
             </form>
-        </>
+        </div>
     )
 }
