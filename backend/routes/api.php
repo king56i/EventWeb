@@ -1,5 +1,6 @@
 <?php
 
+use App\Http\Controllers\Admin\NotificationController;
 use App\Http\Controllers\Admin\UsersController;
 use App\Http\Controllers\AuthController;
 use Illuminate\Http\Request;
@@ -37,8 +38,11 @@ Route::group(['middleware'=>['role:admin|employee','auth:api'],'prefix'=>"admin"
     // users
     Route::resource('users',UsersController::class);
     Route::post('users/delete-users',[UsersController::class,'deleteUsers']);
-    // dn-dk
+    // notifications
+    Route::resource('notifications',NotificationController::class)->except(['edit','show','update','create','store']);
+    Route::post('notifications/delete-notifications',[NotificationController::class,'deleteNotifications']);
 });
+// dn-dk
 Route::post('/register', [AuthController::class, 'register']);
 Route::post('/login', [AuthController::class, 'login']);
 Route::post('/logout', [AuthController::class, 'logout'])->middleware('auth:sanctum');

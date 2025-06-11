@@ -26,4 +26,10 @@ type UserInputs = {
     password:string,
     roles:string[]
 }
-export type { EventInputs, OrganizerInputs, RoleInputs,PermissionInputs,UserInputs }
+type NotificationInputs = {
+    user_id:string,
+    events_id:number,
+    password:string,
+    roles:string[]
+}
+export type { EventInputs, OrganizerInputs, RoleInputs,PermissionInputs,UserInputs, NotificationInputs }

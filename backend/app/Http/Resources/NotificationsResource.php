@@ -16,9 +16,10 @@ class NotificationsResource extends JsonResource
     {
         return [
             'id' => $this->id,
-            'name' => $this->name,
-            'contact_info' => $this->contact_info,
-            'description' => $this->description,
+            'receiver' => new UsersResource($this->whenLoaded('user')),
+            'event' => new EventsResource($this->whenLoaded('event')),
+            'message' => $this->message,
+            'type' => $this->type,
         ];
     }
 }

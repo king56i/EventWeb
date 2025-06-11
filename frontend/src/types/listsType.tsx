@@ -39,4 +39,11 @@ type UserType = {
     password:string,
     roles:string[]
 }
-export type {OrganizerType,EventType,HeaderType,RoleType,PermissionType,UserType}
+type NotificationType = {
+    id:number,
+    receiver:any,
+    event:any,
+    message:string,
+    type:string
+}
+export type {OrganizerType,EventType,HeaderType,RoleType,PermissionType,UserType,NotificationType}
