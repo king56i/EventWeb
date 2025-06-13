@@ -20,6 +20,8 @@
     "react-dom": "^19.1.0",
     "react-hook-form": "^7.56.4",
     "react-router-dom": "^7.6.1",
+    "react-slick": "^0.30.3",
+    "slick-carousel": "^1.8.1",
     "sweetalert2": "^11.22.0"
   },
   "devDependencies": {
@@ -28,6 +30,7 @@
     "@types/node": "^22.15.22",
     "@types/react": "^19.1.2",
     "@types/react-dom": "^19.1.2",
+    "@types/react-slick": "^0.23.13",
     "@vitejs/plugin-react": "^4.5.0",
     "@vitejs/plugin-react-swc": "^3.9.0",
     "eslint": "^9.25.0",

@@ -23,7 +23,19 @@ export default function EventForm(){
     }, [id]);
     const onSubmit = async(data:EventInputs)=> {
         try {
-            const  res = id ? await EventServices.updateEvent({id:parseInt(id),data}): await EventServices.addEvent(data);
+            const formData = new FormData();
+            Object.entries(data).forEach(([key, value]) => {
+            if (value instanceof FileList) {
+                Array.from(value).forEach((file, index) => {
+                    formData.append(`${key}[]`, file);
+                });
+            } else if (typeof value === 'boolean' || typeof value === 'number') {
+                formData.append(key, String(value));
+            } else {
+                formData.append(key, value);
+            }
+        });
+            const  res = id ? await EventServices.updateEvent({id:parseInt(id),data}): await EventServices.addEvent(formData);
             if (res?.data.success) {
                 Swal.fire({
                     title: 'Success!',
@@ -56,7 +68,7 @@ export default function EventForm(){
         fetchOrganizers();
     },[event])
     return (
-        <form onSubmit={handleSubmit(onSubmit)}>
+        <form onSubmit={handleSubmit(onSubmit)} encType="multipart/form-data">
             <div className={styles.inputGroup}>
                 <label htmlFor="title" className={styles.labelText}>Tiêu Đề:</label>
                 <input placeholder="Nhập tiêu đề..." className={styles.inputField} type="text" {...register("title",{required:true})} />
@@ -93,6 +105,44 @@ export default function EventForm(){
                     ))}
                 </select>
             </div>
+            <div className={styles.inputGroup}>
+                <label htmlFor="banner" className={styles.labelText}>Banner:</label>
+                <input type="file" className={styles.inputField} {...register("banner", { required: true })} />
+            </div>
+            {errors.banner && <span>This field is required</span>} 
+            <div className={styles.inputGroup}>
+                <label htmlFor="thumbnail" className={styles.labelText}>Thumbnail:</label>
+                <input type="file" className={styles.inputField} {...register("thumbnail", { required: true })} />
+            </div>
+            {errors.thumbnail && <span>This field is required</span>} 
+            <div className={styles.inputGroup}>
+                <label htmlFor="images" className={styles.labelText}>Hình Ảnh:</label>
+                <input type="file" multiple className={styles.inputField} {...register("images", { required: true })} />
+            </div>
+            {errors.images && <span>This field is required</span>} 
+            <div className={styles.inputGroup}>
+                <label className={styles.labelText}>Sự kiện nổi bật?</label>
+                <div>
+                    <label>
+                    <input
+                        type="radio"
+                        value="1"
+                        {...register("is_featured", { required: true })}
+                    />
+                    Có
+                    </label>
+                    <label style={{ marginLeft: "1rem" }}>
+                    <input
+                        type="radio"
+                        value="0"
+                        {...register("is_featured", { required: true })}
+                    />
+                    Không
+                    </label>
+                </div>
+            </div>
+            {errors.is_featured && <span>Vui lòng chọn!</span>}
+
             {errors.organizers_id && <span>This field is required</span>}
             <div className={styles.inputGroup}>
                 <label htmlFor="status" className={styles.labelText}>Trạng Thái:</label>

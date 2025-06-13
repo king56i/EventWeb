@@ -21,6 +21,8 @@ import CreateEditUser from "./pages/admin/users/CreateEditUser"
 import UsersMN from "./pages/admin/users/users"
 import Login from "./pages/user/Login"
 import Register from "./pages/user/Register"
+import "slick-carousel/slick/slick.css";
+import "slick-carousel/slick/slick-theme.css";
 function App() {
   return (
     <Router>

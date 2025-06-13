@@ -5,6 +5,10 @@ type EventType = {
     start_date: string;
     end_date: string;
     location: string;
+    banner: string;
+    thumbnail:string;
+    images:string[];
+    is_featured:'1'|'0';
     organizer: {id:number,name:string,description:string,contact_info:string};
     status: "draft" | "published" | "cancelled";
     created_at: string;

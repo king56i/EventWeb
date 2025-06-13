@@ -19,6 +19,10 @@ class Events extends Model
         'end_date',
         'organizers_id',
         'location',
+        'banner',
+        'thumbnail',
+        'images',
+        'is_featured',
         'status'
     ];
     public function organizer(){

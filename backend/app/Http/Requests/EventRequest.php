@@ -30,6 +30,10 @@ class EventRequest extends FormRequest
             'location' => ['required'],
             'organizers_id' => ['required'],
             'status' => ['required'],
+            'banner'      => ['required'],
+            'thumbnail'   => ['required'],
+            'images'      => ['required'],
+            'is_featured' => ['required'],
         ];
     }
 }

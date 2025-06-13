@@ -4,6 +4,10 @@ type EventInputs = {
     start_date:string,
     end_date:string,
     location:string,
+    banner:FileList,
+    thumbnail:FileList,
+    images:FileList,
+    is_featured:'1'|'0',
     organizers_id:number,
     status:"draft" | "published" | "cancelled"
 }

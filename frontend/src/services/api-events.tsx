@@ -138,6 +138,9 @@ const EventServices = {
         }else {
             Swal.fire('Từ chối phục hồi', '', 'info');
         }
-    },
+    },getFeaturedEvents: async()=>{
+        const res = await apiGet({url:'http://localhost:8000/api/admin/events'}); 
+        return res?.data.data.filter((e:any)=> e.is_featured === 1);
+    }
 }
 export default EventServices;
