@@ -36,4 +36,5 @@ type NotificationInputs = {
     password:string,
     roles:string[]
 }
+
 export type { EventInputs, OrganizerInputs, RoleInputs,PermissionInputs,UserInputs, NotificationInputs }

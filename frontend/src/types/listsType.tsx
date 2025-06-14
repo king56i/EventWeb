@@ -50,4 +50,15 @@ type NotificationType = {
     message:string,
     type:string
 }
-export type {OrganizerType,EventType,HeaderType,RoleType,PermissionType,UserType,NotificationType}
+type TicketType = {
+    id:number,
+    event:EventType,
+    ticket_type:string,
+    price:number,
+    quantity_available:number,
+    quantity_sold:number,
+    status:'active'|'inactive',
+    created_at:string,
+    updated_at:string,
+}
+export type {OrganizerType,EventType,HeaderType,RoleType,PermissionType,UserType,NotificationType,TicketType}
